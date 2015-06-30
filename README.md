@@ -3,8 +3,9 @@
 </p>
 
 [![Build Status](https://travis-ci.org/andreamazz/AMPopTip.svg)](https://travis-ci.org/andreamazz/AMPopTip)
-[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMPopTip/badge.svg)](http://cocoapods.org/?q=ampoptip)
 [![Coverage Status](https://coveralls.io/repos/andreamazz/AMPopTip/badge.svg)](https://coveralls.io/r/andreamazz/AMPopTip)
+[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMPopTip/badge.svg)](http://cocoapods.org/?q=ampoptip)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Join the chat at https://gitter.im/andreamazz/AMPopTip](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/andreamazz/AMPopTip?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Animated popover that pops out of a frame. You can specify the direction of the popover and the arrow that points to its origin. Color, border radius and font can be easily customized. 
@@ -13,20 +14,36 @@ This popover can be used to leave subtle hints about your UI and provide fun loo
 #Screenshot
 ![AMPopTip](https://raw.githubusercontent.com/andreamazz/AMPopTip/master/assets/screenshot.gif)
 
-#Setup
+#Setup with Cocoapods
 * Add ```pod 'AMPopTip'``` to your ```Podfile```
 * Run ```pod install```
 * Run ```open App.xcworkspace```
+
+#Setup with Carthage
+* Add ```github "andreamazz/AMPopTip"```
+* Run ```carthage update```
+* Add ```AMPopTip.framework``` in your project
 
 #Usage
 The API is fairly straight forward, you can show and hide the popover at any time.
 
 ##Showing the popover
 You must specify the text that you want to display alongside the popover direction, its max width, the view that will contain it and the frame of the view that the popover's arrow will point to.
+
+####Objective-C
+
 ```objc
 self.popTip = [AMPopTip popTip];
 [self.popTip showText:@"I'm a popover popping over" direction:AMPopTipDirectionUp maxWidth:200 inView:self.view fromFrame:someView.frame];
 ```
+
+####Swift
+
+```swift
+let popTip = AMPopTip()
+popTip.showText("Hello", direction: .Up, maxWidth: 200, inView: self.view, fromFrame: someView.frame)
+```
+
 You can also display the popover in the center, with no arrow, in this case the `fromFrame` parameter will be the whole view:
 ```objc
 [self.popTip showText:@"I'm a popover" direction:AMPopTipDirectionNone maxWidth:200 inView:self.view fromFrame:self.view.frame];
